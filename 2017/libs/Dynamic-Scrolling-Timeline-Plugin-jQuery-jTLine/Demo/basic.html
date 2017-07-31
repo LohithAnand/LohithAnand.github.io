@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Fira+Sans:400,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="../css/style.css"> <!-- Resource style -->
+    <script src="../js/modernizr.js"></script> <!-- Modernizr -->
+
+    <script src="../js/jquery-2.1.4.js"></script>
+    <script src="../js/jquery.mobile.custom.min.js"></script>
+    <script src="../js/jtline.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var contentText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
+            var myjSonObject = {
+                "args": {
+
+                },
+                "dataArray": [
+                  {
+                      "isSelected": "true",
+                      "nextDistance": 2,
+                      "title": "My First Point 1",
+                      "subTitle": "subTitle11111",
+                      "dateValue": "10:12", // 10:12
+                      "pointCnt": "p1",
+                      "bodyCnt": 'hi other text'
+                  },
+                  {
+                      "isSelected": "",
+                      "nextDistance": 1,
+                      "title": "My First Point 2",
+                      "subTitle": "subTitle222222",
+                      "dateValue": "15:12", // 12:11
+                      "pointCnt": "p2",
+                      "bodyCnt": contentText
+                  },
+                  {
+                      "isSelected": "",
+                      "nextDistance": 4,
+                      "title": "My First Point 3",
+                      "subTitle": "subTitle33333",
+                      "dateValue": "35:12", // 12:11
+                      "pointCnt": "p3",
+                      "bodyCnt": contentText
+                  },
+                  {
+                      "isSelected": "",
+                      "nextDistance": 7,
+                      "title": "My First Point 3",
+                      "subTitle": "subTitle33333",
+                      "dateValue": "89:12", // 12:11
+                      "pointCnt": "p4",
+                      "bodyCnt": contentText
+                  }
+                ]
+            }
+
+            // dataRoot : '/'
+            var myMappedObject = [
+                  {
+                      "taskTitle": "My Task 1",
+                      "isSelected": "true",
+                      "taskSubTitle": "January 16th, 2014",
+                      "assignDate": "16/01/2014",
+                      "taskDetails": 'hi <span style="color:red">my html content</span> other text'
+                  },
+                  {
+                      "isSelected": "",
+                      "taskTitle": "My Task 2",
+                      "taskSubTitle": "February 28th, 2014",
+                      "assignDate": "17/01/2014",
+                      "taskDetails": contentText
+                  },
+                  {
+                      "isSelected": "",
+                      "taskTitle": "My Task 2",
+                      "taskSubTitle": "February 28th, 2014",
+                      "assignDate": "18/01/2014",
+                      "taskDetails": contentText
+                  },
+                  {
+                      "isSelected": "",
+                      "taskTitle": "My Task 2",
+                      "taskSubTitle": "February 28th, 2014",
+                      "assignDate": "19/01/2014",
+                      "taskDetails": contentText
+                  },
+            ];
+
+            // dataRoot : 'myData'
+            var myMappedObjectA = {
+                attrA: "",
+                atrrB: "",
+                "myData": [
+                {
+                    "taskTitle": "My Task 1",
+                    "isSelected": "true",
+                    "taskSubTitle": "January 16th, 2014",
+                    "assignDate": "16/01/2014",
+                    "taskDetails": 'hi <span style="color:red">my html content</span> other text'
+                },
+                {
+                    "isSelected": "",
+                    "taskTitle": "My Task 2",
+                    "taskSubTitle": "February 28th, 2014",
+                    "assignDate": "28/02/2014",
+                    "taskDetails": contentText
+                }
+                ]
+            };
+
+            // dataRoot : 'parent.ch2'
+            var myMappedObjectB = {
+                attrA: "",
+                atrrB: "",
+                "parent": {
+                    "ch1": {},
+                    "ch2": [{
+                        "taskTitle": "My Task 1",
+                        "isSelected": "true",
+                        "taskSubTitle": "January 16th, 2014",
+                        "assignDate": "16/01/2014",
+                        "taskDetails": 'hi <span style="color:red">my html content</span> other text'
+                    }, {
+                        "isSelected": "",
+                        "taskTitle": "My Task 2",
+                        "taskSubTitle": "February 28th, 2014",
+                        "assignDate": "28/02/2014",
+                        "taskDetails": contentText
+                    }]
+                }
+
+            };
+
+            var jtLine = $('.myjtline').jTLine({
+                // -------- Ajax Call -----------------
+                //callType: 'ajax',
+                //url: 'js/data.json',
+                // -------- jSon Object ---------------
+                callType: 'jsonObject',
+                structureObj: myjSonObject,
+                // -------- Maaped Json Object --------
+                //map: {
+                //    "dataRoot": "/",
+                //    "title": "taskTitle",
+                //    "subTitle": "taskSubTitle",
+                //    "dateValue": "assignDate",
+                //    "pointCnt": "assignDate",
+                //    "bodyCnt": "taskDetails"
+                //},
+                // ------------------------------------
+                distanceMode: 'fixDistance',// 'fixDistance' 'auto' 'predefinedDistance'
+                eventsMinDistance: 60,// Consider It as Distance Unit "by Pixel"
+                fixDistanceValue: 1, //  if eventsMinDistance = 60 & fixDistanceValue= 2 then the value is : 120 px
+                firstPointMargin: 1,
+                onPointClick: function (e) {
+                    console.log(e);
+                },
+                formatTitle: function (title) {
+                    return '<h2><span style="color:green">' + title + '</span></h2>';
+                },
+                formatSubTitle: function (subTitle) {
+                    return '<em><span style="color:blue">' + subTitle + '</span></em>';
+                },
+                formatBodyContent: function (bodyCnt) {
+                    return '<p><span style="color:#6a6a6a">' + bodyCnt + '</span></p>';
+                }
+
+            });
+            // jtLine.myPublicFunction('hi nady');
+        });
+    </script>
+</head>
+<body>
+    <div class="myjtline">
+    </div>
+</body>
+</html>
