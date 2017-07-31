@@ -49,10 +49,20 @@ jQuery(document).ready(function() {
       });
     };
 
+    this.highlightClick = function() {
+      jQuery('.main-navigation .nav-list li a').on('click', function() {
+        console.log("li clicked");
+        jQuery('.main-navigation .nav-list li a').removeClass('selected');
+          jQuery(this).addClass('selected');
+      });
+
+    };
+
     this.registerEvents = function() {
       console.log("registerEvents");
         this.setupSkillsCloud();
         this.smoothScroll();
+        this.highlightClick();
     };
   }
  console.log("doc ready");
