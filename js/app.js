@@ -53,20 +53,25 @@ jQuery(document).ready(function() {
       });
     };
 
-    this.highlightClick = function() {
-      jQuery('.main-navigation .nav-list li a').on('click', function() {
-        console.log("li clicked");
-        jQuery('.main-navigation .nav-list li a').removeClass('selected');
-          jQuery(this).addClass('selected');
-      });
-
+    this.updateSelectedTabOnClick = function() {
+      jQuery(window).on('scroll', function() {
+        var fromTop = $(this).scrollTop() + 54;
+        var scrollItems = jQuery('.contentBlocks');
+        var cur = scrollItems.map(function(){
+         if ($(this).offset().top < fromTop)
+           return this;
+        });
+        cur = jQuery(cur[cur.length-1]);
+        var id = cur && cur.length ? cur.attr('id') : "landing";
+        jQuery('.nav-list li a').removeClass('selected').filter("[href='#"+id+"']").addClass('selected');
+      }).trigger('scroll');
     };
 
     this.registerEvents = function() {
       console.log("registerEvents");
         this.setupSkillsCloud();
         this.smoothScroll();
-        this.highlightClick();
+        this.updateSelectedTabOnClick();
     };
   }
  console.log("doc ready");
