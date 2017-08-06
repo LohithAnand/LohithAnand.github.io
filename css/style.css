@@ -22,10 +22,17 @@
   padding-right: 55px;
   padding-left: 55px;
 }
+.main-navigation .nav-list {
+  margin: 0;
+  padding: 0;
+}
 .main-navigation .nav-list li {
   display: inline-block;
   min-width: 85px;
   text-align: center;
+  height:100%;
+  padding: 1em;
+  cursor: pointer;
 }
 .main-navigation .nav-list li a {
   text-decoration: none;

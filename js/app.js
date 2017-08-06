@@ -67,14 +67,25 @@ jQuery(document).ready(function() {
       }).trigger('scroll');
     };
 
+    this.propagateNavListClick = function() {
+      jQuery('.nav-list li').on('click', function() {
+          var a = jQuery(this).find('a');
+          if(a.hasClass('smoothScroll')) {
+            a.click();
+          } else {
+            window.open(a.attr('href'));
+          }
+      });
+    };
+
     this.registerEvents = function() {
-      console.log("registerEvents");
         this.setupSkillsCloud();
         this.smoothScroll();
         this.updateSelectedTabOnClick();
+        this.propagateNavListClick();
     };
   }
- console.log("doc ready");
+
   var site = new Portfolio();
   site.registerEvents();
 
