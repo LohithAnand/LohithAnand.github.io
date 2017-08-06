@@ -1,3 +1,6 @@
+html {
+  font-family: cursive;
+}
 .main-navigation {
   position: fixed;
   top: 0;

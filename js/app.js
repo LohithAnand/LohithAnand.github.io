@@ -36,7 +36,8 @@ jQuery(document).ready(function() {
         bgColor: '#fff',
         fontColor: '#000',
         radius: '90%',
-        speed: 1
+        speed: 1,
+        fontFamily : 'cursive'
       });
     };
 
