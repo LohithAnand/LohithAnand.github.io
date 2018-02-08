@@ -28,6 +28,14 @@ jQuery(document).ready(function() {
                     "assignDate": "01/02/2017",
                     "taskShortDate": "2017",
                     "taskDetails": "Web, Mobile Application development"
+                },
+                {
+                    "isSelected": "",
+                    "taskTitle": "iTech - Texas A&M University",
+                    "taskSubTitle": "Software Engineering Intern",
+                    "assignDate": "01/01/2018",
+                    "taskShortDate": "2018",
+                    "taskDetails": "Web development"
                 }
             ];
 
